@@ -11,7 +11,7 @@ import { ApiMoviesService } from '../api-movies.service';
 export class MovieListComponent implements OnInit {
   type: string;
   typeSubscription: any;
-  movies: object[];
+  movies: any[] = [];
   validTypes = ['top_rated', 'popular', 'upcoming'];
 
   constructor(
@@ -24,9 +24,9 @@ export class MovieListComponent implements OnInit {
     this.typeSubscription = this.route.params.subscribe(params => {
       this.type = params.type;
       if (this.validTypes.includes(params.type)) {
-        this.api.getMovies(this.type).subscribe(res => {
-          console.log(res);
-        })
+        this.api.getMovies(this.type).subscribe((res: any) => {
+          this.movies = res.results;
+        });
       } else {
         this.router.navigate(['/movies/popular']);
       }
