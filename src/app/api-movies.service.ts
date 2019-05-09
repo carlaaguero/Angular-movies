@@ -5,15 +5,15 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiMoviesService {
-  urlBase = `https://api.themoviedv.org/3/`;
-  key = '323112ea2281b9eb70f319f4df22c6b';
+  urlBase = `https://api.themoviedb.org/3/`;
+  key = 'da63f96158928b6fc3e74f1d20e6a5ce';
 
-  generateUrl = (_type) => this.urlBase + `movie/${_type}?api_key=` + this.key;
+  generateUrl = (_type: string) => this.urlBase + `movie/${_type}?api_key=` + this.key;
 
   constructor(private http: HttpClient) {
 
    }
-  getMovies(type){
+  getMovies(type: string){
     return this.http.get(this.generateUrl(type))
   }
 }
