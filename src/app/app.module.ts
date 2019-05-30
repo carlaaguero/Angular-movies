@@ -7,10 +7,10 @@ import { MoviesCategoryComponent } from './movies-category/movies-category.compo
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ApiMoviesService } from './api-movies.service';
-
 import { HttpClientModule } from '@angular/common/http';
 import { MoviesDisplayComponent } from './movies-display/movies-display.component';
 import { FormsModule } from '@angular/forms';
+import { MoviesSearchComponent } from './movies-search/movies-search.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     MovieDetailComponent,
     NavigationComponent,
     MoviesDisplayComponent,
+    MoviesSearchComponent,
   ],
   imports: [
     BrowserModule,
