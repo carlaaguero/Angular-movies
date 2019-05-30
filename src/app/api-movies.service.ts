@@ -2,18 +2,38 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiMoviesService {
-  urlBase = `https://api.themoviedb.org/3/`;
-  key = 'da63f96158928b6fc3e74f1d20e6a5ce';
+  apiBaseUrl = 'https://api.themoviedb.org/3/';
+  apiKey = '323112ea2281b9eb70f319f4df422c6b';
 
-  generateUrl = (_type: string) => this.urlBase + `movie/${_type}?api_key=` + this.key;
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) {
+  endpointCategory(cat, page) {
+    return `${this.apiBaseUrl}movie/${cat}?api_key=${this.apiKey}&page=${page}&language=es-ES`;
+  }
+  endpointMovie(id) {
+    return `${this.apiBaseUrl}movie/${id}?api_key=${this.apiKey}&language=es-ES`;
+  }
+  endpointSimilar(id) {
+    return `${this.apiBaseUrl}movie/${id}/similar?api_key=${this.apiKey}&language=es-ES`;
+  }
 
-   }
-  getMovies(type: string){
-    return this.http.get(this.generateUrl(type))
+  getCategory(cat, page = 1) {
+    let url = this.endpointCategory(cat, page);
+    return this.http.get(url);
+  }
+  getMovie(id) {
+    let url = this.endpointMovie(id);
+    return this.http.get(url);
+  }
+  getSimilar(id) {
+    let url = this.endpointSimilar(id);
+    return this.http.get(url);
+  }
+  searchMovies(query) {
+    let url = `${this.apiBaseUrl}search/movie?api_key=${this.apiKey}&query=${query}&language=es-ES`;
+    return this.http.get(url);
   }
 }

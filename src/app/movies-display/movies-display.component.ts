@@ -6,7 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./movies-display.component.scss']
 })
 export class MoviesDisplayComponent implements OnInit {
-@Input() films:object[];
+
+  @Input()
+  moviesArray: object[];
+
   constructor() { }
 
   ngOnInit() {

@@ -1,12 +1,18 @@
-.navigation {
-    display: flex;
-    justify-content: space-between;
-    background: black;
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: #333;
+  color: white;
+  padding: 2em;
+  a {
     color: white;
-    padding: 2em;
-    a {
-      color: white;
-      text-transform: uppercase;
-      text-decoration: none;
-    }
+    text-decoration: none;
+    margin: 0 1em;
+    text-transform: uppercase;
   }
+  .active {
+    text-decoration: underline;
+    color: red;
+  }
+}
