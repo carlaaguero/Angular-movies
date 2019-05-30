@@ -1,3 +1,2 @@
-<p>
-  movies-search works!
-</p>
+<input type="text" [(ngModel)]="query"  (keyup.enter)="search()" placeholder="search">
+</p>	<app-movies-display [moviesArray]="moviesFound"></app-movies-display>
